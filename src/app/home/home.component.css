@@ -1,0 +1,10 @@
+.drop-zone-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-drop-div {
+  width: 100%;
+}
+

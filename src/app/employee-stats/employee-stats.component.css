@@ -1,0 +1,23 @@
+.emp-stats-container {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+mat-card {
+  width: 100%;
+}
+
+mat-card-content {
+  margin-bottom: 16px;
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+}
+
+mat-card-footer {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,8 @@
+<div class="drop-zone-container" *ngIf="!employees">
+  <file-drop class="file-drop-div" headertext="Drop your file here"
+    (onFileDrop)="fileDropped($event)"
+    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)"></file-drop>
+</div>
+<app-employee-preview-list *ngIf="employees && employees.length > 0"
+  [employees]="employees">
+</app-employee-preview-list>

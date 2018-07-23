@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -ms-overflow-style: none;
+  overflow: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* background-color: cornsilk; */
+  background-color: #eef2f6;
+}
+
+.drop-zone {
+  margin: 40px auto !important;
+  width: 80% !important;
+  height: 85vh !important;
+  border: 2px solid #e1e1e1 !important;
+  border-radius: 2px !important;
+}
+
+.drop-zone .content {
+  height: 100% !important;
+}
