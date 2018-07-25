@@ -13,6 +13,9 @@ export class HomeComponent implements OnInit {
 
   public files: UploadFile[] = [];
   public employees: Employee[];
+  public odcName: string;
+  public month: string;
+  public year: string;
 
   constructor(private employeeDataService: EmployeeDataService) { }
 
@@ -45,6 +48,9 @@ export class HomeComponent implements OnInit {
       const ws = wb.Sheets[wsname];
       const fileData = this.employeeDataService
         .processRowData(<any>(XLSX.utils.sheet_to_json(ws, { header: 10 })));
+      this.odcName = fileData.odcName;
+      this.month = this.employeeDataService.getMonthName(Number(fileData.month));
+      this.year = fileData.year;
       this.employees = fileData.employees;
     };
   }

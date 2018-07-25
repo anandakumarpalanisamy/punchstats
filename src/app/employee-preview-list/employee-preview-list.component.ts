@@ -8,6 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class EmployeePreviewListComponent implements OnInit {
 
   @Input() employees;
+  @Input() odcName;
+  @Input() month;
+  @Input() year;
 
   constructor() { }
 
