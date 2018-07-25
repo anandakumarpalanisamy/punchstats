@@ -9,6 +9,8 @@ export interface Employee {
 }
 
 export interface DayPunch {
+  date: string;
+  dayOfWeek: string;
   punchIn: string;
   punchOut: string;
   totalHours: number;

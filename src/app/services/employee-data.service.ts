@@ -75,7 +75,14 @@ export class EmployeeDataService {
     let lastProcessField: string;
 
     for (let i = 1; i <= noOfDays; i++) {
-
+      let tempDay = '0';
+      if (i < 10) {
+        tempDay = tempDay.concat(i.toString());
+      } else {
+        tempDay = i.toString();
+      }
+      const date = moment(tempDay + month + year, 'DDMMYYYY').format('YYYY-MM-DD').toString();
+      const currentDate = moment().format('YYYY-MM-DD');
       let punchInField;
       let punchOutField;
       let totalHoursField;
@@ -97,13 +104,19 @@ export class EmployeeDataService {
       }
 
       dayPunches.push({
-        punchIn: dayRecord[punchInField],
-        punchOut: dayRecord[punchOutField],
-        totalHours: dayRecord[totalHoursField] === 'N.A' ? 0 : Number(dayRecord[totalHoursField]),
-        totalProductiveHours: dayRecord[productiveHoursField] === 'N.A' ? 0 : Number(dayRecord[productiveHoursField])
+        date: date,
+        dayOfWeek: moment(date, 'YYYY-MM-DD').get('day').toString(),
+        punchIn: dayRecord[punchInField] === 'N.A'
+          ? currentDate.concat('T').concat('00:00:00') : currentDate + 'T' + dayRecord[punchInField],
+        punchOut: dayRecord[punchOutField] === 'N.A'
+          ? currentDate.concat('T').concat('00:00:00') : currentDate + 'T' + dayRecord[punchOutField],
+        totalHours: dayRecord[totalHoursField] === 'N.A'
+          ? 0 : Number(dayRecord[totalHoursField]),
+        totalProductiveHours: dayRecord[productiveHoursField] === 'N.A'
+          ? 0 : Number(dayRecord[productiveHoursField])
       });
     }
-    return dayPunches;
+    return dayPunches.filter(day => day.dayOfWeek !== '0' && day.dayOfWeek !== '6');
   }
 
   public getEmployeeRecord(id: string) {
